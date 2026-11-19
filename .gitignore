@@ -1,1 +1,6 @@
 .anchor/
+node_modules/
+pwa-dist/
+icons/*.png
+고스톱-점수판-오프라인.html
+고스톱-iPad-PWA.zip
