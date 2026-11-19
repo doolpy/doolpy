@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T12:02:27.566Z",
+  "title": "Design System: Go-Stop Scoreboard",
+  "extensions": {
+    "colorMeta": {
+      "felt": {
+        "role": "primary",
+        "displayName": "Table Felt",
+        "canonical": "#123c32",
+        "tonalRamp": [
+          "#123b31",
+          "#1d6252",
+          "#298972",
+          "#35b193",
+          "#4ecaad",
+          "#76d6bf",
+          "#a9e5d7",
+          "#e4f7f2"
+        ]
+      },
+      "felt-deep": {
+        "role": "primary",
+        "displayName": "Deep Felt",
+        "canonical": "#0c3028",
+        "tonalRamp": [
+          "#0f3d33",
+          "#1a6655",
+          "#248f77",
+          "#2eb899",
+          "#47d1b2",
+          "#70dbc3",
+          "#a5e9da",
+          "#e2f8f3"
+        ]
+      },
+      "felt-light": {
+        "role": "secondary",
+        "displayName": "Raised Felt",
+        "canonical": "#1f5748",
+        "tonalRamp": [
+          "#14382f",
+          "#215e4e",
+          "#2f846d",
+          "#3ca98c",
+          "#56c3a6",
+          "#7bd0b9",
+          "#ace2d3",
+          "#e5f6f1"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Ledger Sheet",
+        "canonical": "#f4f4e9",
+        "tonalRamp": [
+          "#333319",
+          "#55552a",
+          "#77773b",
+          "#99994c",
+          "#b3b366",
+          "#c4c488",
+          "#dadab4",
+          "#f3f3e7"
+        ]
+      },
+      "sheet-bright": {
+        "role": "neutral",
+        "displayName": "Bright Sheet",
+        "canonical": "#fcfcf4",
+        "tonalRamp": [
+          "#3c3c10",
+          "#64641b",
+          "#8c8c26",
+          "#b4b431",
+          "#cece4b",
+          "#d9d973",
+          "#e7e7a7",
+          "#f7f7e3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Score Ink",
+        "canonical": "#172c25",
+        "tonalRamp": [
+          "#1a322a",
+          "#2c5446",
+          "#3d7563",
+          "#4f977f",
+          "#68b098",
+          "#8ac2af",
+          "#b5d8cd",
+          "#e8f3ef"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#687a6e",
+        "tonalRamp": [
+          "#232925",
+          "#3b453e",
+          "#526057",
+          "#6a7c70",
+          "#839589",
+          "#9fada3",
+          "#c2cbc5",
+          "#ecefed"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Rule Line",
+        "canonical": "#d5ddcd",
+        "tonalRamp": [
+          "#262e1f",
+          "#404c34",
+          "#596a48",
+          "#73895d",
+          "#8ca276",
+          "#a6b795",
+          "#c7d2bc",
+          "#edf1ea"
+        ]
+      },
+      "lime": {
+        "role": "tertiary",
+        "displayName": "Score Lime",
+        "canonical": "#d6f55f",
+        "tonalRamp": [
+          "#3a4804",
+          "#617807",
+          "#87a80a",
+          "#aed80d",
+          "#c8f227",
+          "#d4f557",
+          "#e4f895",
+          "#f6fddd"
+        ]
+      },
+      "vermilion": {
+        "role": "secondary",
+        "displayName": "Signal Vermilion",
+        "canonical": "#d74432",
+        "tonalRamp": [
+          "#40120c",
+          "#6b1e15",
+          "#952a1d",
+          "#c03625",
+          "#da503f",
+          "#e2776a",
+          "#eda9a1",
+          "#f9e4e1"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "Score Gold",
+        "canonical": "#f0bd38",
+        "tonalRamp": [
+          "#473505",
+          "#775809",
+          "#a67b0d",
+          "#d59f10",
+          "#efb82a",
+          "#f2c859",
+          "#f7dc97",
+          "#fcf4de"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Scoreboard Display",
+        "purpose": "Page and player headings."
+      },
+      "body": {
+        "displayName": "Korean System UI",
+        "purpose": "Korean copy and form labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "working-sheet",
+        "value": "0 14px 36px rgb(4 25 20 / 22%)",
+        "purpose": "Lift entry and result sheets from the felt."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "150ms ease-out",
+        "purpose": "Color feedback for actions, tabs, and count steppers."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "small-phone",
+        "value": "390px"
+      },
+      {
+        "name": "phone",
+        "value": "720px"
+      },
+      {
+        "name": "tablet",
+        "value": "950px"
+      },
+      {
+        "name": "wide-container",
+        "value": "1440px"
+      }
+    ],
+    "components": [
+      {
+        "name": "Record Score Button",
+        "kind": "button",
+        "refersTo": "button-primary",
+        "description": "Commit the active player calculated score.",
+        "html": "<button class=\"ds-record\">Record score <span aria-hidden=\"true\">?</span></button>",
+        "css": ".ds-record { display:flex; width:100%; min-height:50px; align-items:center; justify-content:space-between; padding:0 17px; border:0; background:var(--felt); color:var(--sheet-bright); font:750 13px \"Segoe UI\",sans-serif; cursor:pointer; transition:background-color 150ms ease-out; } .ds-record:hover { background:var(--felt-light); } .ds-record:focus-visible { outline:3px solid var(--vermilion); outline-offset:3px; }"
+      },
+      {
+        "name": "Quiet Action",
+        "kind": "button",
+        "refersTo": "button-secondary",
+        "description": "Secondary player and undo action.",
+        "html": "<button class=\"ds-quiet\">Undo last record</button>",
+        "css": ".ds-quiet { min-height:38px; padding:0 12px; border:1px solid rgb(224 239 215 / 30%); background:transparent; color:var(--sheet-bright); font:650 12px \"Segoe UI\",sans-serif; cursor:pointer; } .ds-quiet:hover { border-color:var(--lime); color:var(--lime); } .ds-quiet:focus-visible { outline:3px solid var(--vermilion); outline-offset:3px; }"
+      },
+      {
+        "name": "Count Field",
+        "kind": "input",
+        "refersTo": "input-count",
+        "description": "Editable card count with direct steppers.",
+        "html": "<label class=\"ds-count\"><button type=\"button\" aria-label=\"Decrease\">?</button><input type=\"number\" min=\"0\" value=\"0\" aria-label=\"Card count\"><button type=\"button\" aria-label=\"Increase\">+</button></label>",
+        "css": ".ds-count { display:inline-flex; height:36px; align-items:center; border:1px solid #b9c8b9; background:var(--sheet-bright); } .ds-count button { width:34px; height:34px; border:0; background:transparent; color:var(--felt); cursor:pointer; } .ds-count input { width:39px; height:32px; border:0; border-inline:1px solid var(--line); background:transparent; color:var(--ink); text-align:center; font-variant-numeric:tabular-nums; } .ds-count input:focus-visible,.ds-count button:focus-visible { outline:3px solid var(--vermilion); outline-offset:2px; }"
+      },
+      {
+        "name": "Player Tab",
+        "kind": "nav",
+        "refersTo": "player-tab",
+        "description": "Select a player and keep their total visible.",
+        "html": "<button class=\"ds-tab\" aria-selected=\"true\"><span>01</span><span><strong>Player</strong><small>12 points</small></span></button>",
+        "css": ".ds-tab { position:relative; display:flex; min-width:150px; min-height:51px; align-items:center; gap:10px; padding:7px 16px; border:0; background:transparent; color:#fff; text-align:left; cursor:pointer; } .ds-tab::after { position:absolute; right:0; bottom:0; left:0; height:3px; background:var(--lime); content:\"\"; } .ds-tab:focus-visible { outline:3px solid var(--vermilion); outline-offset:2px; } .ds-tab small { display:block; color:#afc9b7; }"
+      },
+      {
+        "name": "Scoring Sheet",
+        "kind": "custom",
+        "refersTo": "entry-sheet",
+        "description": "Ruled categories on a pale ledger surface.",
+        "html": "<section class=\"ds-sheet\"><h2>Score entry</h2><p>Card groups</p></section>",
+        "css": ".ds-sheet { padding:24px; background:var(--sheet); color:var(--ink); box-shadow:0 14px 36px rgb(4 25 20 / 22%); } .ds-sheet h2 { margin:0; font:760 23px \"Segoe UI\",sans-serif; letter-spacing:-.06em; } .ds-sheet p { padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font:400 13px/1.5 \"Segoe UI\",sans-serif; }"
+      },
+      {
+        "name": "Live Score",
+        "kind": "custom",
+        "refersTo": "live-score",
+        "description": "Show category points and multipliers before recording.",
+        "html": "<section class=\"ds-live\"><span>Live calculation</span><strong>24<small>pt</small></strong><p>3 + multipliers = 24</p></section>",
+        "css": ".ds-live { padding:24px; background:var(--sheet-bright); color:var(--ink); } .ds-live span,.ds-live p { color:var(--muted); font:400 12px \"Segoe UI\",sans-serif; } .ds-live strong { display:block; color:var(--felt); font:780 60px/1.1 \"Segoe UI\",sans-serif; font-variant-numeric:tabular-nums; letter-spacing:-.09em; } .ds-live small { margin-left:8px; font-size:16px; letter-spacing:normal; }"
+      }
+    ],
+    "narrative": {
+      "northStar": "The Game-Night Score Ledger",
+      "overview": "The interface treats the scores as a shared record at the edge of a Korean game table. A deep green field frames pale, ruled sheets; lime and vermilion marks distinguish each player's score, important multipliers, and actions. The forms stay square and legible, like a scorekeeper's working surface rather than a decorative game skin.\n\nThe calculator's central promise is visible arithmetic for everyone at the table. Each player's card counts, assumptions, base points, and multipliers stay together in a simultaneous entry sheet, so the round does not require switching between player tabs. The atmosphere comes from color, ruled divisions, and custom tally marks?not from ornamental card art or hidden scoring rules.",
+      "keyCharacteristics": [
+        "Green tabletop surrounding pale, ruled score sheets",
+        "Square controls and category groups",
+        "Bold Korean system typography with tabular score figures",
+        "Every player's live total visible beside their inputs; one shared round action commits the table"
+      ],
+      "rules": [
+        {
+          "name": "The Visible Arithmetic Rule",
+          "body": "Keep category points and applied multipliers inspectable beside the resulting total.",
+          "section": "colors"
+        }
+      ],
+      "dos": [
+        "Do keep scoring assumptions visible and editable.",
+        "Do preserve every player's total above the simultaneous entry sheets.",
+        "Do keep each player's counts and live result together, with one clear shared action to commit every player's round score.",
+        "Do show five-round score transfers without implying a cash value.",
+        "Do keep touch actions at least 44px on coarse-pointer tablet screens."
+      ],
+      "donts": [
+        "Don't imply one universal house-rule set.",
+        "Don't hide category arithmetic behind a single unexplained total.",
+        "Don't require switching between player tabs to enter the same round.",
+        "Don't add decorative card illustrations, gradients, or rounded card grids that compete with score entry."
+      ]
+    }
+  }
+}
