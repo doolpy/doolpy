@@ -1,4 +1,4 @@
-const CACHE_NAME = "gostop-scoreboard-v1";
+const CACHE_NAME = "gostop-scoreboard-v6";
 const APP_BASE_URL = new URL("./", self.location.href);
 const APP_ENTRY_URL = new URL("index.html", APP_BASE_URL).href;
 const APP_SHELL = [
@@ -7,6 +7,7 @@ const APP_SHELL = [
   "styles.css",
   "src/app.js",
   "src/score.js",
+  "src/state.js",
   "manifest.webmanifest",
   "icons/apple-touch-icon.png",
   "icons/icon-192.png",

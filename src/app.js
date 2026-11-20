@@ -1,16 +1,10 @@
 import {
   calculateScore,
   calculateSettlement,
-  DEFAULT_RULES,
-  EMPTY_COUNTS,
 } from "./score.js";
+import { createInitialState, loadSavedState, STORAGE_KEY } from "./state.js";
 
-const STORAGE_KEY = "gostop-scoreboard-v1";
 const standaloneOfflineFile = document.documentElement.hasAttribute("data-standalone-offline");
-const DEFAULT_PLAYERS = [
-  { id: "player-1", name: "1번", total: 0, entries: [], counts: { ...EMPTY_COUNTS } },
-  { id: "player-2", name: "2번", total: 0, entries: [], counts: { ...EMPTY_COUNTS } },
-];
 const CATEGORY_INFO = [
   { key: "gwang", label: "광", note: "3광 3점 · 4광 4점 · 5광 15점", max: 5 },
   { key: "animals", label: "열끗", note: "5장부터 1점, 이후 한 장마다 +1", max: 9 },
@@ -20,53 +14,9 @@ const CATEGORY_INFO = [
   { key: "go", label: "고", note: "3고부터 ×2", max: 12 },
 ];
 
-function createInitialState() {
-  return {
-    players: structuredClone(DEFAULT_PLAYERS),
-    rules: { ...DEFAULT_RULES },
-    undoStack: [],
-    completedRounds: [],
-    settlements: [],
-  };
-}
-
-function isValidState(value) {
-  return (
-    value &&
-    Array.isArray(value.players) &&
-    value.players.length >= 2 &&
-    value.players.length <= 4 &&
-    value.players.every(
-      (player) =>
-        typeof player.id === "string" &&
-        typeof player.name === "string" &&
-        Number.isFinite(player.total) &&
-        Array.isArray(player.entries) &&
-        player.counts &&
-        Object.keys(EMPTY_COUNTS).every((key) => Number.isFinite(player.counts[key])),
-    ) &&
-    value.rules &&
-    ["threeGwangWithBiIsTwo", "meongTta", "goMultiplier"].every(
-      (key) => typeof value.rules[key] === "boolean",
-    ) &&
-    Array.isArray(value.undoStack)
-  );
-}
-
 function loadState() {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return { state: createInitialState(), notice: "" };
-    const parsed = JSON.parse(saved);
-    if (!isValidState(parsed)) {
-      return {
-        state: createInitialState(),
-        notice: "저장된 점수판 형식이 맞지 않아 새 점수판을 열었습니다. 필요한 기록을 확인해 주세요.",
-      };
-    }
-    parsed.completedRounds = Array.isArray(parsed.completedRounds) ? parsed.completedRounds : [];
-    parsed.settlements = Array.isArray(parsed.settlements) ? parsed.settlements : [];
-    return { state: parsed, notice: "" };
+    return loadSavedState(localStorage.getItem(STORAGE_KEY));
   } catch {
     return {
       state: createInitialState(),
