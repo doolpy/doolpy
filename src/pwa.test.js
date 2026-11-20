@@ -5,9 +5,14 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 
 test("PWA manifest is configured as a Korean standalone app with tablet orientation", async () => {
-  const manifest = JSON.parse(await readFile(new URL("manifest.webmanifest", root), "utf8"));
+  const [manifestSource, html] = await Promise.all([
+    readFile(new URL("manifest.webmanifest", root), "utf8"),
+    readFile(new URL("index.html", root), "utf8"),
+  ]);
+  const manifest = JSON.parse(manifestSource);
 
   assert.equal(manifest.lang, "ko-KR");
+  assert.match(html, /<html lang="ko">/);
   assert.equal(manifest.display, "standalone");
   assert.equal(manifest.orientation, "any");
   assert.equal(manifest.start_url, "./");
@@ -20,11 +25,15 @@ test("PWA manifest is configured as a Korean standalone app with tablet orientat
 });
 
 test("service worker pre-caches the app UI and score data needed offline", async () => {
-  const worker = await readFile(new URL("service-worker.js", root), "utf8");
+  const [worker, builder] = await Promise.all([
+    readFile(new URL("service-worker.js", root), "utf8"),
+    readFile(new URL("build-pwa.mjs", root), "utf8"),
+  ]);
 
-  for (const asset of ["", "index.html", "styles.css", "src/app.js", "src/score.js", "manifest.webmanifest"]) {
+  for (const asset of ["", "index.html", "styles.css", "src/app.js", "src/score.js", "src/state.js", "manifest.webmanifest"]) {
     assert.ok(worker.includes(`"${asset}"`), `Missing offline app asset: ${asset}`);
   }
+  assert.ok(builder.includes('["app.js", "score.js", "state.js"]'));
   assert.match(worker, /request\.mode === "navigate"/);
   assert.match(worker, /new URL\(path, APP_BASE_URL\)\.href/);
   assert.match(worker, /caches\.match\(APP_ENTRY_URL\)/);
@@ -55,6 +64,7 @@ test("the standalone file uses a classic script and skips service-worker registr
   ]);
 
   assert.ok(builder.includes('data-standalone-offline'));
+  assert.ok(builder.includes('new URL("./src/state.js", import.meta.url)'));
   assert.ok(builder.includes('    <script>\\n(() => {\\n${inlineApp}\\n})();\\n    </script>\\n  </body>'));
   assert.ok(app.includes('const standaloneOfflineFile = document.documentElement.hasAttribute("data-standalone-offline")'));
 });

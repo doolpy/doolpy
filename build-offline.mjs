@@ -2,17 +2,20 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const outputPath = new URL("./고스톱-점수판-오프라인.html", import.meta.url);
-const [html, css, scoreModule, appModule] = await Promise.all([
+const [html, css, scoreModule, stateModule, appModule] = await Promise.all([
   readFile(new URL("./index.html", import.meta.url), "utf8"),
   readFile(new URL("./styles.css", import.meta.url), "utf8"),
   readFile(new URL("./src/score.js", import.meta.url), "utf8"),
+  readFile(new URL("./src/state.js", import.meta.url), "utf8"),
   readFile(new URL("./src/app.js", import.meta.url), "utf8"),
 ]);
 
-const inlineApp = `${scoreModule.replace(/^export\s+/gm, "")}\n${appModule.replace(
-  /^import\s*\{[\s\S]*?\}\s*from\s*["']\.\/score\.js["'];\s*/m,
-  "",
-)}`.replace(/<\/script/gi, "<\\/script");
+const inlineModule = (source) =>
+  source
+    .replace(/^import\s*\{[\s\S]*?\}\s*from\s*["']\.\/(?:score|state)\.js["'];\s*/gm, "")
+    .replace(/^export\s+/gm, "");
+const inlineApp = [scoreModule, stateModule, appModule].map(inlineModule).join("\n")
+  .replace(/<\/script/gi, "<\\/script");
 const standaloneHtml = html
   .replace('<html lang="ko">', '<html lang="ko" data-standalone-offline>')
   .replace(

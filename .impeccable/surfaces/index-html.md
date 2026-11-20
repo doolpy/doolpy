@@ -17,13 +17,13 @@ Korean-speaking players at an in-person game enter every player's captured card 
 Show Gwang, animals/Meongtta, ribbons, pi and double-pi, go count, the live point breakdown for each player, player totals and the complete recorded score log. Keep every player's counts and live total visible simultaneously, with one shared action to commit the round. Let players jump directly to the reverse-chronological log and expand each saved score to inspect its date, card counts, category points, and multipliers. After every fifth round, show each player's five-round point total and explicit score transfers. Expose the selected assumptions for three-gwang-with-bi, Meongtta, and go multipliers. Make clear that bak, shake, pi-bak, gwang-bak and point-to-currency conversion are outside the calculation.
 
 ## Direction and memorable moment
-A ruled game-night score ledger rendered as one shared multi-player workbench: deep green tabletop, pale scoring sheets, vermilion and lime marks. Every player's live total changes beside their card counts; one round action commits the whole table and leads to a five-round settlement.
+An iPadOS-style scorekeeper rendered as one shared multi-player workbench: a system-gray canvas, crisp white scoring sheets, familiar blue actions, and restrained category marks. Large native Korean typography makes every player's live total easy to read; one round action commits the whole table and leads to a five-round settlement.
 
 ## Responsive behavior
-All player entry panels stay on the same screen; never require switching a selected-player tab to enter a round. Each panel keeps counts and live calculation together; the shared commit and undo actions remain easy to find. Tablet portrait presents the players in a readable vertical list; tablet landscape and desktop use the available width without horizontal overflow; touch controls are at least 44px on tablet. Narrow phones stack each panel and preserve all core actions.
+All player entry panels stay on the same screen; never require switching a selected-player tab to enter a round. Each panel keeps counts and live calculation together; the shared commit and undo actions remain easy to find. Tablet portrait presents the players in a readable vertical list; iPad Pro landscape at 1024px and above uses two player columns, with no horizontal overflow; touch controls are at least 44px on tablet. Narrow phones stack each panel and preserve all core actions.
 
 ## iPad web-app delivery
-The same web surface is installable from Safari's HTTPS origin and supports standalone display, all orientations, an app icon, and a cached offline app shell. Explain the first-online-visit requirement for Add to Home Screen and keep score history in the device's origin-scoped browser storage.
+The same web surface runs from the GitHub Pages HTTPS origin in iPad Chrome and supports standalone display, all orientations, a matching iPadOS-style app icon, and a cached offline app shell. Explain the first-online-visit requirement and keep score history in the device's origin-scoped browser storage.
 
 ## Open decisions
 The default rule switches are a starter set, not a universal rulebook; groups can toggle supported variations. Additional bonus rules remain out of scope until defined.

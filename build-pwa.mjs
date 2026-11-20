@@ -41,11 +41,11 @@ function makeIcon(size) {
     }
   };
   const scale = (value) => Math.round((value * size) / 512);
-  const felt = [18, 60, 50, 255];
-  const paper = [252, 252, 244, 255];
-  const rule = [213, 221, 205, 255];
-  const lime = [214, 245, 95, 255];
-  const red = [215, 68, 50, 255];
+  const felt = [242, 242, 247, 255];
+  const paper = [255, 255, 255, 255];
+  const rule = [209, 209, 214, 255];
+  const lime = [0, 102, 204, 255];
+  const red = [198, 40, 40, 255];
 
   pixels.fill(0);
   paint(0, 0, size, size, felt);
@@ -100,7 +100,7 @@ for (const path of [
   await copyFile(new URL(path, root), new URL(path, outputDirectory));
 }
 
-for (const path of ["app.js", "score.js"]) {
+for (const path of ["app.js", "score.js", "state.js"]) {
   await copyFile(new URL(`./src/${path}`, root), new URL(`./src/${path}`, outputDirectory));
 }
 

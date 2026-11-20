@@ -1,20 +1,22 @@
 :root {
   color-scheme: light;
-  font-family: "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --felt: #123c32;
-  --felt-deep: #0c3028;
-  --felt-light: #1f5748;
-  --sheet: #f4f4e9;
-  --sheet-bright: #fcfcf4;
-  --ink: #172c25;
-  --muted: #687a6e;
-  --line: #d5ddcd;
-  --lime: #d6f55f;
-  --vermilion: #d74432;
-  --gold: #f0bd38;
-  --shadow: 0 14px 36px rgb(4 25 20 / 22%);
+  font-size: 18px;
+  line-height: 1.5;
+  --felt: #0066cc;
+  --felt-deep: #f2f2f7;
+  --felt-light: #0056b3;
+  --sheet: #fff;
+  --sheet-bright: #fff;
+  --ink: #1d1d1f;
+  --muted: #636366;
+  --line: #d1d1d6;
+  --lime: #ffcc00;
+  --vermilion: #c62828;
+  --gold: #ffcc00;
+  --shadow: 0 8px 24px rgb(29 29 31 / 8%);
 }
 
 * {
@@ -26,6 +28,8 @@ body {
   margin: 0;
   background: var(--felt-deep);
   color: var(--ink);
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 button,
@@ -41,7 +45,7 @@ button:focus-visible,
 input:focus-visible,
 summary:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--vermilion);
+  outline: 3px solid var(--felt);
   outline-offset: 3px;
 }
 
@@ -61,10 +65,8 @@ button:disabled {
   margin: 0 auto;
   padding: env(safe-area-inset-top) max(clamp(18px, 5.5vw, 80px), env(safe-area-inset-right))
     max(76px, env(safe-area-inset-bottom)) max(clamp(18px, 5.5vw, 80px), env(safe-area-inset-left));
-  background:
-    radial-gradient(ellipse at 8% 13%, rgb(43 96 75 / 65%), transparent 42%),
-    linear-gradient(135deg, #164437, var(--felt) 54%, #123a31);
-  color: var(--sheet-bright);
+  background: #f2f2f7;
+  color: var(--ink);
 }
 
 .masthead {
@@ -1514,7 +1516,7 @@ button:disabled {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) and (orientation: landscape) {
   .player-entry-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
@@ -2061,5 +2063,591 @@ button:disabled {
   .player-tab::after,
   .step-button {
     transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+}
+
+/* Native iPadOS palette with larger, clearer typography. */
+.masthead {
+  border-color: var(--line);
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.brand-mark {
+  border-radius: 8px;
+  background: var(--felt);
+}
+
+.brand-mark i {
+  background: #fff;
+}
+
+.masthead-note,
+.section-heading p,
+.players-heading p,
+.history-heading p,
+.page-footer p {
+  color: var(--muted);
+}
+
+.masthead-note {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.masthead-note:hover {
+  color: var(--felt);
+}
+
+.section-heading h1 {
+  font-size: clamp(38px, 4vw, 48px);
+  letter-spacing: -0.03em;
+}
+
+.section-heading p,
+.players-heading p,
+.history-heading p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.text-button,
+.small-button {
+  min-height: 50px;
+  padding: 0 16px;
+  border-color: var(--line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.text-button:hover:not(:disabled),
+.small-button:hover {
+  border-color: var(--felt-light);
+  color: var(--felt);
+}
+
+.danger-text,
+.remove-player-button,
+.reset-button {
+  color: var(--vermilion);
+}
+
+.players-heading h2 {
+  font-size: 28px;
+  letter-spacing: -0.025em;
+}
+
+.players-heading p,
+.players-heading > span {
+  font-size: 16px;
+}
+
+.players-heading > span,
+.standing-row.is-active .standing-total {
+  color: var(--felt);
+}
+
+.standings {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.standing-row,
+.standing-row + .standing-row,
+.standing-row:nth-child(even) {
+  border-color: var(--line);
+}
+
+.standing-row.is-active {
+  background: #eef5ff;
+}
+
+.standing-rank,
+.standing-name,
+.standing-total small {
+  color: var(--muted);
+}
+
+.standing-name {
+  font-size: 17px;
+}
+
+.standing-total {
+  color: var(--ink);
+  font-size: 26px;
+}
+
+.player-entry {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.player-entry-heading {
+  min-height: 72px;
+  background: #f2f2f7;
+  color: var(--ink);
+}
+
+.player-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--felt);
+  color: #fff;
+  font-size: 14px;
+}
+
+.player-entry-name input {
+  min-height: 52px;
+  padding: 0 14px;
+  border-color: rgb(98 109 134 / 28%);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 78%);
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.player-entry-name input::placeholder {
+  color: #636366;
+  opacity: 1;
+}
+
+.running-total {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.running-total strong {
+  color: var(--felt);
+  font-size: 28px;
+}
+
+.remove-player-button {
+  min-height: 46px;
+  border-color: rgb(185 79 84 / 32%);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.remove-player-button:hover:not(:disabled) {
+  border-color: var(--vermilion);
+  background: #fff1f0;
+  color: var(--vermilion);
+}
+
+.player-result {
+  border: 1px solid #e5e5ea;
+  border-radius: 18px;
+  background: #f2f2f7;
+}
+
+.player-result-topline,
+.player-equation,
+.player-result .math-row,
+.player-result .multiplier-line {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.player-round-score {
+  color: var(--felt);
+  font-size: clamp(60px, 5.5vw, 76px);
+}
+
+.player-result .math-row strong,
+.player-result .multiplier-line strong {
+  font-size: 15px;
+}
+
+.player-result .multiplier-line {
+  border-top-color: #d1d4e5;
+}
+
+.player-actions .clear-player-button {
+  min-height: 48px;
+  border-color: var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.count-group {
+  border-color: var(--line);
+}
+
+.group-title h3 {
+  font-size: 20px;
+  letter-spacing: -0.015em;
+}
+
+.count-label {
+  font-size: 17px;
+}
+
+.count-note,
+.group-footnote,
+.rule-toggle small {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.count-note {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.player-counts .count-note {
+  max-width: 230px;
+}
+
+.count-control {
+  height: 44px;
+  overflow: hidden;
+  border-color: #d5d9ea;
+  border-radius: 11px;
+}
+
+.step-button {
+  height: 42px;
+  color: var(--felt);
+  font-size: 23px;
+}
+
+.step-button:hover {
+  background: #eeecff;
+}
+
+.count-input {
+  height: 40px;
+  font-size: 20px;
+}
+
+.go-copy p,
+.rule-default,
+.rule-disclaimer {
+  font-size: 15px;
+}
+
+.rules summary {
+  font-size: 16px;
+}
+
+.rule-default,
+.go-copy p {
+  color: var(--muted);
+}
+
+.rule-disclaimer {
+  border-radius: 10px;
+  background: #fff8e1;
+  color: #705e00;
+  line-height: 1.45;
+}
+
+.rule-toggle input {
+  accent-color: var(--felt);
+}
+
+.record-round-button {
+  min-height: 64px;
+  border-radius: 13px;
+  background: var(--felt);
+  color: #fff;
+  font-size: 18px;
+}
+
+.record-round-button:hover:not(:disabled) {
+  background: var(--felt-light);
+}
+
+.record-round-button:disabled {
+  background: #e8e9f1;
+  color: #72798f;
+  opacity: 1;
+}
+
+.record-round-button span {
+  color: #fff;
+}
+
+.round-commit,
+.settlement-result {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.round-commit-count {
+  font-size: 17px;
+}
+
+.round-commit-count strong {
+  font-size: 26px;
+}
+
+.round-commit-copy p,
+.settlement-heading p,
+.settlement-totals > span,
+.settlement-transfer,
+.settlement-note {
+  font-size: 16px;
+}
+
+.settlement-heading h2 {
+  font-size: 24px;
+}
+
+.settlement-stamp {
+  border-radius: 8px;
+  background: #fff8e1;
+  color: #705e00;
+  font-size: 14px;
+}
+
+.round-history {
+  padding: 22px 24px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.history-heading h2 {
+  color: var(--ink);
+  font-size: 24px;
+}
+
+.history-count,
+.history-empty,
+.history-index,
+.history-description,
+.history-round,
+.history-detail-heading time,
+.history-breakdown span,
+.history-formula,
+.history-counts,
+.history-rule-notes,
+.history-detail-unavailable {
+  color: var(--muted);
+}
+
+.history-count,
+.history-empty {
+  font-size: 16px;
+}
+
+.history-row {
+  border-color: var(--line);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.history-summary {
+  min-height: 62px;
+  font-size: 15px;
+}
+
+.history-summary::after {
+  border-color: var(--muted);
+}
+
+.history-player,
+.history-detail-heading strong,
+.history-formula strong,
+.history-counts span {
+  color: var(--ink);
+}
+
+.history-row strong,
+.history-breakdown strong {
+  color: var(--felt);
+}
+
+.history-detail {
+  border-color: var(--line);
+  border-radius: 0 0 12px 12px;
+  background: #f2f2f7;
+}
+
+.history-detail-heading strong,
+.history-formula strong {
+  font-size: 15px;
+}
+
+.history-detail-heading time,
+.history-breakdown span,
+.history-formula,
+.history-counts,
+.history-rule-notes,
+.history-detail-unavailable {
+  font-size: 14px;
+}
+
+.install-guide {
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.install-guide summary,
+.install-guide strong {
+  color: var(--ink);
+}
+
+.install-guide summary {
+  font-size: 16px;
+}
+
+.install-guide ol,
+.install-guide p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.install-guide summary::after {
+  border-color: var(--felt);
+}
+
+.reset-button {
+  min-height: 48px;
+  border-color: rgb(185 79 84 / 35%);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 15px;
+}
+
+.reset-button:hover {
+  border-color: var(--vermilion);
+  background: #fff1f0;
+  color: var(--vermilion);
+}
+
+.page-footer p {
+  font-size: 15px;
+}
+
+.table-edge {
+  height: 1px;
+  background: var(--line);
+}
+
+@media (min-width: 721px) {
+  .section-heading h1 {
+    font-size: clamp(42px, 4.2vw, 52px);
+  }
+
+  .players-heading h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .masthead-note {
+    max-width: none;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .game-controls {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .game-controls .text-button {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 950px) {
+  .player-score-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .players-heading h2 {
+    font-size: 24px;
+  }
+
+  .player-entry-heading {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .player-entry-name {
+    flex: 1 1 90px;
+  }
+
+  .player-entry-name input {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 10px;
+    font-size: 17px;
+  }
+
+  .running-total {
+    font-size: 15px;
+  }
+
+  .running-total strong {
+    font-size: 24px;
+  }
+
+  .remove-player-button {
+    flex: 0 0 auto;
+    min-width: 58px;
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+
+  .count-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .player-counts .count-note {
+    max-width: none;
+  }
+
+  .player-result {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .player-result-topline,
+  .player-result-main,
+  .player-result .math-breakdown,
+  .player-result .multiplier-line,
+  .player-actions {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .player-result-main {
+    border-bottom: 1px solid var(--line);
   }
 }
